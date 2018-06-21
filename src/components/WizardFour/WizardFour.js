@@ -11,8 +11,8 @@ class WizardFour extends Component {
                     <p>Have you already found your new home?</p> <br />
                     
                     <div className="row">
-                        <Link to="/wFive"><button onClick={this.props.foundTrue}>Yes</button></Link>
-                        <Link to="/wFive"><button onClick={this.props.foundFalse}>No </button></Link>  
+                        <Link to="/wFive"><button onClick={(e) => this.props.updateFound(true)}>Yes</button></Link>
+                        <Link to="/wFive"><button onClick={(e) => this.props.updateFound(false)}>No </button></Link>  
                     </div>         
                 </div>
             </div>
@@ -20,10 +20,12 @@ class WizardFour extends Component {
     }
 }
 
-mapStateToProps = ( state ) => {
+const mapStateToProps = ( state ) => {
     const { found } = state
     
-    return found
+    return {
+        found
+    }
 }
 
 export default connect(mapStateToProps, { updateFound })(WizardFour);
